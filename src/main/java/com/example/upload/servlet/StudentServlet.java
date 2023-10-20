@@ -34,7 +34,7 @@ public class StudentServlet extends HttpServlet {
         // Hiển thị danh sách sinh viên
         out.write("<h1>Danh sách sinh viên</h1>");
         out.write("<table>");
-        out.write("<tr><th>Mã sinh viên</th><th>Tên</th><th>Năm sinh</th><th>Điện thoại</th></tr>");
+        out.write("<tr><th>Ma SV</th><th>Name</th><th>Birtday</th><th>phone</th></tr>");
 
         List<StudentEntity> studentList = studentDAO.getAllStudent();
         for (StudentEntity student : studentList) {
@@ -58,10 +58,8 @@ public class StudentServlet extends HttpServlet {
         String phone = req.getParameter("studentPhone");
 
         if (name != null && birthday != null && phone != null) {
-            StudentEntity newStudent = new StudentEntity();
-            newStudent.setName(name);
-            newStudent.setBirtday(birthday);
-            newStudent.setPhone(phone);
+            StudentEntity newStudent = new StudentEntity(null,name,birthday,phone);
+            System.out.println("11111"+newStudent.getName());
 
             try {
                 studentDAO.createStudent(newStudent);

@@ -29,6 +29,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>uploadServlet</servlet-name>
+        <servlet-class>com.example.upload.servlet.UploadServlet</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>uploadServlet</servlet-name>
+        <url-pattern>/upload-file</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>studentServlet</servlet-name>
         <servlet-class>com.example.upload.servlet.StudentServlet</servlet-class>
 
@@ -36,5 +46,23 @@
     <servlet-mapping>
         <servlet-name>studentServlet</servlet-name>
         <url-pattern>/student-servlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>demoJsp</servlet-name>
+        <jsp-file>/demojsp.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>demoJsp</servlet-name>
+        <url-pattern>/demo-jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>listStudent</servlet-name>
+        <jsp-file>/list-student.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>listStudent</servlet-name>
+        <url-pattern>/list-student</url-pattern>
     </servlet-mapping>
 </web-app>

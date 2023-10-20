@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 
-@WebServlet(value = "/upload-file")
+//@WebServlet(value = "/upload-file")
 public class UploadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,35 +30,31 @@ public class UploadServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Đường dẫn đến thư mục lưu trữ file
-        String uploadPath = getServletContext().getRealPath("") + File.separator + "uploadfiles";
+        String uploadPath = getServletContext().getRealPath("") + File.separator + "uploads";
         File uploadDirectory = new File(uploadPath);
 
-        // Tạo thư mục nếu nó chưa tồn tại
         if (!uploadDirectory.exists()) {
             uploadDirectory.mkdirs();
         }
 
-        // Sử dụng Commons FileUpload để xử lý yêu cầu upload
         DiskFileItemFactory factory = new DiskFileItemFactory();
         ServletFileUpload upload = new ServletFileUpload(factory);
 
         try {
             List<FileItem> items = upload.parseRequest(req);
             for (FileItem item : items) {
-                // Xác định tên file và đường dẫn đến file
                 String fileName = new File(item.getName()).getName();
                 String filePath = uploadPath + File.separator + fileName;
                 File uploadedFile = new File(filePath);
 
-                // Lưu file lên thư mục upload
+
                 item.write(uploadedFile);
 
-                // Có thể thực hiện thêm xử lý ở đây
+
             }
-            resp.getWriter().write("File đã được tải lên thành công!");
+            resp.getWriter().write("tai thanh cong");
         } catch (Exception e) {
-            resp.getWriter().write("Lỗi khi tải file lên: " + e.getMessage());
+            resp.getWriter().write("loi khi tai file len: " + e.getMessage());
         }
     }
 

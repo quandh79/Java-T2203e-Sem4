@@ -19,11 +19,44 @@ public class StudentDAOImpl implements StudentDAO {
     }
     @Override
     public void createStudent(StudentEntity student) {
-        try{
+        try {
             tran.begin();
             en.persist(student);
+            tran.commit();
+        } catch (Exception ex) {
+            System.out.printf(ex.getMessage());
+            tran.rollback();
+        }
+    }
 
-        }catch (Exception ex){
+    @Override
+    public void updateStudent(StudentEntity student) {
+        try {
+            tran.begin();
+            en.merge(student);
+            tran.commit();
+        } catch (Exception ex) {
+            System.out.printf(ex.getMessage());
+            tran.rollback();
+        }
+    }
+
+    @Override
+    public StudentEntity getStudentById(int id) {
+        return en.find(StudentEntity.class, id);
+
+    }
+
+    @Override
+    public void deleteStudent(int id) {
+        try {
+            tran.begin();
+            StudentEntity student = en.find(StudentEntity.class, id);
+            if (student != null) {
+                en.remove(student);
+            }
+            tran.commit();
+        } catch (Exception ex) {
             System.out.printf(ex.getMessage());
             tran.rollback();
         }

@@ -1,19 +1,20 @@
 package com.example.upload.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name="student")
-public class StudentEntity {
+public class StudentEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private String birtday;
+    private Date birtday;
     private String phone;
 
-    public StudentEntity(Integer id, String name, String birtday, String phone) {
+    public StudentEntity(Integer id, String name, Date birtday, String phone) {
         this.id = id;
         this.name = name;
         this.birtday = birtday;
@@ -23,7 +24,7 @@ public class StudentEntity {
     public StudentEntity() {
     }
 
-    public StudentEntity(String name, String birtday, String phone) {
+    public StudentEntity(String name, Date birtday, String phone) {
         this.name = name;
         this.birtday = birtday;
         this.phone = phone;
@@ -37,8 +38,8 @@ public class StudentEntity {
         return name;
     }
 
-    public String getBirtday() {
-        return birtday;
+    public Date getBirtday() {
+        return this.birtday;
     }
 
     public String getPhone() {
@@ -53,7 +54,7 @@ public class StudentEntity {
         this.name = name;
     }
 
-    public void setBirtday(String birtday) {
+    public void setBirtday(Date birtday) {
         this.birtday = birtday;
     }
 

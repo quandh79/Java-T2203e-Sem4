@@ -3,10 +3,10 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
-    <persistence-unit name="mysqll">
+    <persistence-unit name="jpaDemo">
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/mysqll"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/student"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
             <property name="javax.persistence.jdbc.password" value="abcd@1234"/>
             <property name="hibernate.show_sql" value="true"/>
