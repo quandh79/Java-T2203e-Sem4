@@ -6,6 +6,12 @@
     <title>Student List</title>
 </head>
 <body>
+<!-- Form tìm kiếm -->
+<form action="student" method="get">
+    <input type="hidden" name="action" value="search">
+    <input type="text" name="keyword" placeholder="Search by name...">
+    <input type="submit" value="Search">
+</form>
 <h1>Student List</h1>
 <table >
     <tr>
@@ -58,7 +64,7 @@
     <input type="hidden" name="action" value="edit">
     <input type="hidden" name="id" value="${student.id}">
     <input type="text" name="name" value="${student.name}"><br>
-    <input type="date" name="birthday" value="${student.birthday}"><br>
+    <input type="date" name="birthday" value="<fmt:formatDate value='${student.birthday}' pattern='yyyy-MM-dd' />"><br>
     <input type="text" name="phone" value="${student.phone}"><br>
     <input type="file" name="avatar" accept="image/*"><br>
     <input type="submit" value="Update Student">

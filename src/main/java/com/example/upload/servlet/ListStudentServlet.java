@@ -53,6 +53,12 @@ public class ListStudentServlet extends HttpServlet {
                     studentDAO.deleteStudent(deleteId);
                     response.sendRedirect("student");
                     break;
+                case "search":
+                    String keyword = request.getParameter("keyword");
+                    List<StudentEntity> studentList = studentDAO.searchStudents(keyword);
+
+                    request.setAttribute("studentList", studentList);
+                    request.getRequestDispatcher("list-student.jsp").forward(request, response);
             }
         }
         else {
@@ -90,24 +96,26 @@ public class ListStudentServlet extends HttpServlet {
                 e.printStackTrace(); // Handle the exception properly
             }
             String phone = request.getParameter("phone");
-            //upload anh
-            //String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 
-            // Thay đổi thành đường dẫn tới thư mục upload của bạn
-            String uploadDirectory = "C:\\path\\to\\upload\\directory";
+            String uploadDirectory = "G:\\APTECH\\JavaSwing\\upload\\FileUpload";
 
-            // Tạo thư mục upload nếu nó chưa tồn tại
+
             File uploadDir = new File(uploadDirectory);
             if (!uploadDir.exists()) {
                 uploadDir.mkdir();
             }
-
             Part part = request.getPart("avatar");
             String fileName = part.getSubmittedFileName();
-
+            String uploadPath = uploadDirectory + File.separator + fileName;
+            File file = new File(uploadPath);
+            try (InputStream input = part.getInputStream()) {
+                Files.copy(input, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("File has been saved at: " + file.getAbsolutePath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             StudentEntity student = new StudentEntity(id, name, birthday, phone,fileName);
             studentDAO.updateStudent(student);
-            response.sendRedirect("student");
         } else {
             String name = request.getParameter("name");
             String birthdayStr = request.getParameter("birthday");
@@ -141,7 +149,7 @@ public class ListStudentServlet extends HttpServlet {
             }
             StudentEntity newStudent = new StudentEntity(name, birthday, phone,fileName);
             studentDAO.createStudent(newStudent);
-            response.sendRedirect("student");
         }
+        response.sendRedirect("student");
     }
 }
