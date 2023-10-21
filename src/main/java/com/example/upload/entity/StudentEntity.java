@@ -11,23 +11,26 @@ public class StudentEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private Date birtday;
+    private Date birthday; // Sửa từ birtday thành birthday
     private String phone;
+    private String avatar;
 
-    public StudentEntity(Integer id, String name, Date birtday, String phone) {
+    public StudentEntity(Integer id, String name, Date birthday, String phone, String avatar) {
         this.id = id;
         this.name = name;
-        this.birtday = birtday;
+        this.birthday = birthday;
         this.phone = phone;
+        this.avatar = avatar;
     }
 
     public StudentEntity() {
     }
 
-    public StudentEntity(String name, Date birtday, String phone) {
+    public StudentEntity(String name, Date birthday, String phone, String avatar) {
         this.name = name;
-        this.birtday = birtday;
+        this.birthday = birthday;
         this.phone = phone;
+        this.avatar = avatar;
     }
 
     public Integer getId() {
@@ -38,8 +41,8 @@ public class StudentEntity implements Serializable {
         return name;
     }
 
-    public Date getBirtday() {
-        return this.birtday;
+    public Date getBirthday() { // Sửa từ getBirtday thành getBirthday
+        return this.birthday;
     }
 
     public String getPhone() {
@@ -54,11 +57,19 @@ public class StudentEntity implements Serializable {
         this.name = name;
     }
 
-    public void setBirtday(Date birtday) {
-        this.birtday = birtday;
+    public void setBirthday(Date birthday) { // Sửa từ setBirtday thành setBirthday
+        this.birthday = birthday;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

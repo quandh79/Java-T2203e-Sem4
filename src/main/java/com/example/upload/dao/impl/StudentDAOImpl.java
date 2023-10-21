@@ -7,6 +7,7 @@ import com.example.upload.until.PersistenceUntil;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,5 +73,20 @@ public class StudentDAOImpl implements StudentDAO {
             System.out.println(ex.getMessage());
         }
         return students;
+    }
+
+    @Override
+    public List<StudentEntity> getStudentsWithPagination(int pageNumber, int pageSize) {
+        TypedQuery<StudentEntity> query = en.createQuery("SELECT s FROM StudentEntity s ORDER BY s.id", StudentEntity.class);
+        query.setFirstResult((pageNumber - 1) * pageSize);
+        query.setMaxResults(pageSize);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<StudentEntity> searchStudents(String keyword) {
+        Query query = en.createQuery("SELECT s FROM StudentEntity s WHERE s.name LIKE :keyword ORDER BY s.id")
+                .setParameter("keyword", "%" + keyword + "%");
+        return query.getResultList();
     }
 }

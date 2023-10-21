@@ -10,4 +10,6 @@ void updateStudent(StudentEntity student);
 StudentEntity getStudentById(int id);
 void deleteStudent(int id);
 List<StudentEntity> getAllStudent();
+List<StudentEntity> getStudentsWithPagination(int pageNumber, int pageSize);
+List<StudentEntity> searchStudents(String keyword);
 }
