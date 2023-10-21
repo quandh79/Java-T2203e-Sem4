@@ -19,18 +19,20 @@
         <th>Name</th>
         <th>Birthday</th>
         <th>Phone</th>
+        <th>Avatar</th>
         <th>Action</th>
     </tr>
 
 <%--    <jsp:useBean id="studentList" scope="request" type="java.util.List"/>--%>
     <c:forEach items="${studentList}" var="student">
-        <tr>
+        <tr style="text-align: center">
             <td><c:out value="${student.id}"/></td>
             <td><c:out value="${student.name}"/></td>
             <td>
                 <fmt:formatDate value="${student.birthday}" pattern="dd-MM-yyyy"/> <!-- Sử dụng fmt:formatDate để định dạng ngày tháng -->
             </td>
             <td><c:out value="${student.phone}"/></td>
+            <td style="width: 10%"><img src="/FileUpload/${student.avatar}" alt="image" style="width: 100%; object-fit: cover"></td>
             <td>
                 <a href="student?action=edit&id=${student.id}">Edit</a>
                 <a href="student?action=delete&id=${student.id}">Delete</a>

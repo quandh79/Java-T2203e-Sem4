@@ -97,7 +97,7 @@ public class ListStudentServlet extends HttpServlet {
             }
             String phone = request.getParameter("phone");
 
-            String uploadDirectory = "G:\\APTECH\\JavaSwing\\upload\\FileUpload";
+            String uploadDirectory = "G:\\APTECH\\JavaSwing\\upload\\src\\main\\webapp\\FileUpload";
 
 
             File uploadDir = new File(uploadDirectory);
@@ -129,7 +129,7 @@ public class ListStudentServlet extends HttpServlet {
             String phone = request.getParameter("phone");
 
             // Thay đổi thành đường dẫn tới thư mục upload của bạn
-            String uploadDirectory = "G:\\APTECH\\JavaSwing\\upload\\FileUpload";
+            String uploadDirectory = "G:\\APTECH\\JavaSwing\\upload\\src\\main\\webapp\\FileUpload";
 
             // Tạo thư mục upload nếu nó chưa tồn tại
             File uploadDir = new File(uploadDirectory);
