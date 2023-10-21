@@ -93,7 +93,7 @@ public class ListStudentServlet extends HttpServlet {
             try {
                 birthday = formatter.parse(birthdayStr);
             } catch (ParseException e) {
-                e.printStackTrace(); // Handle the exception properly
+                e.printStackTrace();
             }
             String phone = request.getParameter("phone");
 
@@ -124,14 +124,14 @@ public class ListStudentServlet extends HttpServlet {
             try {
                 birthday = formatter.parse(birthdayStr);
             } catch (ParseException e) {
-                e.printStackTrace(); // Handle the exception properly
+                e.printStackTrace();
             }
             String phone = request.getParameter("phone");
 
-            // Thay đổi thành đường dẫn tới thư mục upload của bạn
+
             String uploadDirectory = "G:\\APTECH\\JavaSwing\\upload\\src\\main\\webapp\\FileUpload";
 
-            // Tạo thư mục upload nếu nó chưa tồn tại
+
             File uploadDir = new File(uploadDirectory);
             if (!uploadDir.exists()) {
                 uploadDir.mkdir();

@@ -6,7 +6,6 @@
     <title>Student List</title>
 </head>
 <body>
-<!-- Form tìm kiếm -->
 <form action="student" method="get">
     <input type="hidden" name="action" value="search">
     <input type="text" name="keyword" placeholder="Search by name...">
@@ -29,7 +28,7 @@
             <td><c:out value="${student.id}"/></td>
             <td><c:out value="${student.name}"/></td>
             <td>
-                <fmt:formatDate value="${student.birthday}" pattern="dd-MM-yyyy"/> <!-- Sử dụng fmt:formatDate để định dạng ngày tháng -->
+                <fmt:formatDate value="${student.birthday}" pattern="dd-MM-yyyy"/>
             </td>
             <td><c:out value="${student.phone}"/></td>
             <td style="width: 10%"><img src="/FileUpload/${student.avatar}" alt="image" style="width: 100%; object-fit: cover"></td>

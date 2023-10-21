@@ -11,7 +11,7 @@ public class StudentEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private Date birthday; // Sửa từ birtday thành birthday
+    private Date birthday;
     private String phone;
     private String avatar;
 
